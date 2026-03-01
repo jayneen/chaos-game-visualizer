@@ -1,23 +1,17 @@
-# fractal-generator
-idea
+# Chaos Game Visualizer
+### Created for the Seattle Universal Math Museum
+#### Authors: Dizzy Swaims, Jayne Nemynova
 
-we need to put 3 dots on screen, of different colors, equally spaced from each other
+Base behavior:
+1. Places 3 equally spaced out SUMM colored dots on screen.
+2. Places a 4th black starting dot anywhere on screen.
+3. Every X seconds a random color is picked, and a new dot is placed halfway between the last dot and the original dot of the chosen color. It takes on the same color.
+4. Pressing the Add a Dot button bypasses the timer and adds a new dot as described in Step 3.
+5. Pressing the Reset button resets the GUI to the starting state as described in Steps 1 and 2.
 
-we need to put a 4th dot after that, black, anywhere on screen (doesn't matter where, it can be anywhere, even outside the dots)
+Extras:
+- Different number of dots.
+- Different distance (currently halfway through the line, maybe 25% or 75%).
 
-every X seconds (10?), a random number is picked (1, 2, or 3) and we draw a line from the black dot to the color associated with the number, put a new dot midway thro the line, the color of the number we land on.
-
-every subsequent time, we use the most recent dot to draw the line from
-
-there needs to be an option for someone to push a button to add a dot with out waiting, so someone can mash the button to add more onto it.
-
-it will need a reset function
-
-make it look good, and utilize SUMM colors
-
-optionals (if time):
--different number of dots
--different distance (currently halfway thro the line, maybe 25% or 75% or something)
-
-example: 
+Example: 
 https://thewessens.net/ClassroomApps/Main/chaosgame.html
