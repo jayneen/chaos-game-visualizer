@@ -2,8 +2,11 @@
   "name": "chaos-game-visualizer",
   "version": "1.0.0",
   "description": "A GUI for an ineractive Chaos Game Visualizer.",
-  "main": "index.js",
+  "main": "dist/main.ts",
+  "type": "module",
   "scripts": {
+    "build": "npx tsc",
+    "start": "electron dist/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
