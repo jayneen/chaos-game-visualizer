@@ -15,3 +15,18 @@ Extras:
 
 Example: 
 https://thewessens.net/ClassroomApps/Main/chaosgame.html
+
+IDE Set Up:
+1. Clone the repository.
+2. Check if Node.js is installed: 
+        node -v
+        npm -v
+   If not, install with: 
+        winget install OpenJS.NodeJS.LTS
+   Winget should be included with Win10/11.
+3. Install dependencies: 
+        npm install
+4. Build the project: 
+        npm run build
+5. Start the application: 
+        npm start
