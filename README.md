@@ -25,3 +25,7 @@ IDE Set Up:
    Winget should be included with Win10/11.  
 3. Install dependencies:  
         npm install  
+4. Build:  
+        npm run build
+5. Run:  
+        npm start
