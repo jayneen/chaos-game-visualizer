@@ -1,5 +1,4 @@
-// importing app and gui functions
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow } from 'electron'; // app and gui
 
 // reference to main window
 let mainWindow: BrowserWindow | null = null;
@@ -7,9 +6,11 @@ let mainWindow: BrowserWindow | null = null;
 function createWindow() {
   mainWindow = new BrowserWindow({
     width: 800,
-    height: 600,
+    height: 500,
   });
+
+  mainWindow.loadFile('../src/index.html');
 }
 
 // creates window when electron is initialized
-app.on('ready', createWindow);
+app.whenReady().then(createWindow);
