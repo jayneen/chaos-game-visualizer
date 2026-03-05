@@ -1,6 +1,6 @@
 # Chaos Game Visualizer
 ### Created for the Seattle Universal Math Museum
-#### Authors: Dizzy Swaims, Jayne Nemynova
+#### Authors: Zane Swaims, Jayne Nemynova
 
 Base behavior:
 1. Places 3 equally spaced out SUMM colored dots on screen.
