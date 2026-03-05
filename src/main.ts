@@ -1,3 +1,5 @@
+// app behavior
+
 import { app, BrowserWindow } from 'electron'; // app and gui
 
 // reference to main window
