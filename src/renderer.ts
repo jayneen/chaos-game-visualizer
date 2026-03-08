@@ -1,12 +1,53 @@
+// constants
 // browser renderer
 const canvas = document.getElementById("canvas") as HTMLCanvasElement;
 canvas.width = 300;
 canvas.height = 300;
 const ctx = canvas.getContext("2d");
+
 //global variables of the current point
 let currX = 0;
 let currY = 0;
 
+// buttons
+// clears canvas and redraws the vertices
+const resetBtn = document.getElementById("reset")!;
+resetBtn.addEventListener("click", () => {
+    if (ctx != null) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        vertexDots();
+    }
+});
+
+// adds a new point to the canvas
+const addBtn = document.getElementById("add")!;
+addBtn.addEventListener("click", () => {
+    if (ctx != null) {
+        placeRandomDot();
+    }
+});
+
+// adds 100 dots to the canvas
+const next100Btn = document.getElementById("next100")!;
+next100Btn.addEventListener("click", () => {
+    if (ctx != null) {
+        for (let i = 0; i < 100; i++) {
+            placeRandomDot();
+        }
+    }
+});
+
+// adds 10,000 dots to the canvas
+const finalBtn = document.getElementById("final")!;
+finalBtn.addEventListener("click", () => {
+    if (ctx != null) {
+        for (let i = 0; i < 10000; i++) {
+            placeRandomDot();
+        }
+    }
+});
+
+// functions
 // draws a dot at given location
 function drawDot(x: number, y: number, radius: number = 3, color: string = "black") {
     currX = x;
@@ -21,21 +62,20 @@ function drawDot(x: number, y: number, radius: number = 3, color: string = "blac
 }
 
 //draws the initial dots
-function vertexDots()
-{
+function vertexDots() {
     if (ctx != null) {
         ctx.beginPath();
-        ctx.arc(150, 5, 3, 0, Math.PI*2);
+        ctx.arc(150, 5, 3, 0, Math.PI * 2);
         ctx.fillStyle = "green";
         ctx.fill();
 
         ctx.beginPath();
-        ctx.arc(10, 295, 3, 0, Math.PI*2);
+        ctx.arc(10, 295, 3, 0, Math.PI * 2);
         ctx.fillStyle = "orange";
         ctx.fill();
 
         ctx.beginPath();
-        ctx.arc(290, 295, 3, 0, Math.PI*2);
+        ctx.arc(290, 295, 3, 0, Math.PI * 2);
         ctx.fillStyle = "purple";
         ctx.fill();
     }
@@ -51,23 +91,20 @@ function randomInRange(min: number, max: number) {
 function placeRandomDot() {
     const temp = Math.floor(Math.random() * 3);
 
-    if(temp == 0)
-    {
+    if (temp == 0) {
         //green
         //x 150, y 5
-        drawDot((currX + 150)/2, (currY + 5)/2, 1, "green")
+        drawDot((currX + 150) / 2, (currY + 5) / 2, 1, "green")
     }
-    else if (temp == 1)
-    {
+    else if (temp == 1) {
         //orange
         //x 10, y 295
-        drawDot((currX + 10)/2, (currY + 295)/2, 1, "orange")
+        drawDot((currX + 10) / 2, (currY + 295) / 2, 1, "orange")
     }
-    else
-    {
+    else {
         //purple
         //x 290, y 295
-        drawDot((currX + 290)/2, (currY + 295)/2, 1, "purple")
+        drawDot((currX + 290) / 2, (currY + 295) / 2, 1, "purple")
     }
 }
 
@@ -75,5 +112,4 @@ function placeRandomDot() {
 
 // script
 vertexDots();
-drawDot(randomInRange(0, canvas.width), randomInRange(0, canvas.height)); // initial dot, will need to add a check after we map a new dot to delete the old dot if it is outside the 3 vertex dots
-setInterval(placeRandomDot, 100); // calls every 10 seconds
+setInterval(placeRandomDot, 10000); // calls every 10 seconds
