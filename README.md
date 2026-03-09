@@ -8,10 +8,16 @@ Base behavior:
 3. Every X seconds a random color is picked, and a new dot is placed halfway between the last dot and the original dot of the chosen color. It takes on the same color.
 4. Pressing the Add a Dot button bypasses the timer and adds a new dot as described in Step 3.
 5. Pressing the Reset button resets the GUI to the starting state as described in Steps 1 and 2.
+6. Next 100 draws 100 new dots.
+7. Final draws 10,000 new dots.
 
-Extras:
-- Different number of dots.
-- Different distance (currently halfway through the line, maybe 25% or 75%).
+TODO: by 21st
+- Variable number of vertices [2 to 8].
+- Independent R-value slider and textbox for precise values.
+- Larger canvas (extend horizontally).
+- Front-end clean up.
+- Deleting artifact points.
+- Code clean up.
 
 Example: 
 https://thewessens.net/ClassroomApps/Main/chaosgame.html
