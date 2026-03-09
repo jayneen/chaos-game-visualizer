@@ -9,6 +9,14 @@ const ctx = canvas.getContext("2d");
 let currX = 0;
 let currY = 0;
 
+//global variable for the R-value, default set to 1/2
+//R-value is the distance we put our new point between the point we selected at random and our current point
+//Should be (0,1) inclusive.
+let r = 0.5;
+
+//number of vertex dots to start with
+let numVerDots = 3;
+
 // buttons
 // clears canvas and redraws the vertices
 const resetBtn = document.getElementById("reset")!;
@@ -62,21 +70,35 @@ function drawDot(x: number, y: number, radius: number = 3, color: string = "blac
     }
 }
 
-//draws the initial dots
+//TODO: not being used yet
+//draws vertex dots
+function drawVertexDots()
+{
+    // need to take in numbers and create the starter shape off of them. need to look into it later
+}
+
+//draws the initial dots for sierpinski triangle specifically
 function vertexDots() {
     if (ctx != null) {
+        //top point
         ctx.beginPath();
         ctx.arc(150, 5, 3, 0, Math.PI * 2);
         ctx.fillStyle = "green";
         ctx.fill();
 
+        //left point
+        //150 - (290 / sqrt(3)) to the left
+        let temp = 150 - Math.ceil(200 / Math.sqrt(3))
         ctx.beginPath();
-        ctx.arc(10, 295, 3, 0, Math.PI * 2);
+        ctx.arc(temp, 290, 3, 0, Math.PI * 2);
         ctx.fillStyle = "orange";
         ctx.fill();
 
+        //right point
+        //150 + (290 / sqrt(3)) to the right
+        temp = 150 + Math.ceil(200 / Math.sqrt(3))
         ctx.beginPath();
-        ctx.arc(290, 295, 3, 0, Math.PI * 2);
+        ctx.arc(temp, 290, 3, 0, Math.PI * 2);
         ctx.fillStyle = "purple";
         ctx.fill();
     }
@@ -92,23 +114,41 @@ function randomInRange(min: number, max: number) {
 function placeRandomDot() {
     const temp = Math.floor(Math.random() * 3);
 
+    //need to redo how to build an equilateral triangle from 1 dot at the top
     if (temp == 0) {
         //green
         //x 150, y 5
-        drawDot((currX + 150) / 2, (currY + 5) / 2, 1, "green")
+        //find the rth distance between x values
+        let newX = currX + (150 - currX) * r;
+
+        //find the rth distance between y values
+        let newY = currY + (5 - currY) * r;
+
+        drawDot(newX, newY, 1, "green")
     }
     else if (temp == 1) {
         //orange
         //x 10, y 295
-        drawDot((currX + 10) / 2, (currY + 295) / 2, 1, "orange")
+        //find the rth distance between x values
+        let newX = currX + ((150 - Math.ceil(200 / Math.sqrt(3))) - currX) * r;
+
+        //find the rth distance between y values
+        let newY = currY + (290 - currY) * r;
+
+        drawDot(newX, newY, 1, "orange")
     }
     else {
         //purple
         //x 290, y 295
-        drawDot((currX + 290) / 2, (currY + 295) / 2, 1, "purple")
+        //find the rth distance between x values
+        let newX = currX + ((150 + Math.ceil(200 / Math.sqrt(3))) - currX) * r;
+
+        //find the rth distance between y values
+        let newY = currY + (290 - currY) * r;
+
+        drawDot(newX, newY, 1, "purple")
     }
 }
-
 
 
 // script
