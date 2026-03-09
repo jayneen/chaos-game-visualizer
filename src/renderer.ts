@@ -114,5 +114,5 @@ function placeRandomDot() {
 vertexDots();
 // initial dot, will need to add a check after we map a new dot to delete 
 // the old dot if it is outside the 3 vertex dots
-// drawDot(randomInRange(0, canvas.width), randomInRange(0, canvas.height)); 
+drawDot(randomInRange(0, canvas.width), randomInRange(0, canvas.height)); 
 setInterval(placeRandomDot, 10000); // calls every 10 seconds
