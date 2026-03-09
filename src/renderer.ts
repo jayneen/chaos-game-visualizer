@@ -15,6 +15,7 @@ const resetBtn = document.getElementById("reset")!;
 resetBtn.addEventListener("click", () => {
     if (ctx != null) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawDot(randomInRange(0, canvas.width), randomInRange(0, canvas.height)); 
         vertexDots();
     }
 });
