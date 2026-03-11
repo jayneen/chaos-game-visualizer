@@ -9,44 +9,19 @@ const ctx = canvas.getContext("2d");
 let currX = 0;
 let currY = 0;
 
-// buttons
-// clears canvas and redraws the vertices
-const resetBtn = document.getElementById("reset")!;
-resetBtn.addEventListener("click", () => {
-    if (ctx != null) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawDot(randomInRange(0, canvas.width), randomInRange(0, canvas.height)); 
-        vertexDots();
-    }
-});
+// starts in fullscreen
+document.documentElement.requestFullscreen();
 
+// buttons
 // adds a new point to the canvas
-const addBtn = document.getElementById("add")!;
-addBtn.addEventListener("click", () => {
+window.addEventListener("keydown", (event: KeyboardEvent) => {
+  if (event.code === "Space") {
     if (ctx != null) {
         placeRandomDot();
     }
+  }
 });
 
-// adds 100 dots to the canvas
-const next100Btn = document.getElementById("next100")!;
-next100Btn.addEventListener("click", () => {
-    if (ctx != null) {
-        for (let i = 0; i < 100; i++) {
-            placeRandomDot();
-        }
-    }
-});
-
-// adds 10,000 dots to the canvas
-const finalBtn = document.getElementById("final")!;
-finalBtn.addEventListener("click", () => {
-    if (ctx != null) {
-        for (let i = 0; i < 10000; i++) {
-            placeRandomDot();
-        }
-    }
-});
 
 // functions
 // draws a dot at given location
@@ -116,4 +91,4 @@ vertexDots();
 // initial dot, will need to add a check after we map a new dot to delete 
 // the old dot if it is outside the 3 vertex dots
 drawDot(randomInRange(0, canvas.width), randomInRange(0, canvas.height)); 
-setInterval(placeRandomDot, 10000); // calls every 10 seconds
+setInterval(placeRandomDot, 100); // calls every 10 seconds
