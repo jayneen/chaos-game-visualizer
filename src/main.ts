@@ -7,8 +7,6 @@ let mainWindow: BrowserWindow | null = null;
 
 function createWindow() {
     mainWindow = new BrowserWindow({
-        width: 600,
-        height: 600,
     });
 
     mainWindow.loadFile('../src/index.html');
