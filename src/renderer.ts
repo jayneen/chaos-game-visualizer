@@ -1,9 +1,11 @@
 // constants
 // browser renderer
 const canvas = document.getElementById("canvas") as HTMLCanvasElement;
-canvas.width = 300;
-canvas.height = 300;
+const rect = canvas.getBoundingClientRect();
 const ctx = canvas.getContext("2d");
+
+canvas.width = rect.width;
+canvas.height = rect.height;
 
 //global variables of the current point
 let currX = 0;
@@ -40,20 +42,9 @@ function drawDot(x: number, y: number, radius: number = 3, color: string = "blac
 //draws the initial dots
 function vertexDots() {
     if (ctx != null) {
-        ctx.beginPath();
-        ctx.arc(150, 5, 3, 0, Math.PI * 2);
-        ctx.fillStyle = "green";
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.arc(10, 295, 3, 0, Math.PI * 2);
-        ctx.fillStyle = "orange";
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.arc(290, 295, 3, 0, Math.PI * 2);
-        ctx.fillStyle = "purple";
-        ctx.fill();
+        drawDot(canvas.width/2, 5, 3, "green");
+        drawDot(10, canvas.height - 5, 3, "orange");
+        drawDot(canvas.width - 10, canvas.height - 5, 3, "purple");
     }
 
 }
@@ -70,17 +61,17 @@ function placeRandomDot() {
     if (temp == 0) {
         //green
         //x 150, y 5
-        drawDot((currX + 150) / 2, (currY + 5) / 2, 1, "green")
+        drawDot((currX + canvas.width/2) / 2, (currY + 5) / 2, 1, "green")
     }
     else if (temp == 1) {
         //orange
         //x 10, y 295
-        drawDot((currX + 10) / 2, (currY + 295) / 2, 1, "orange")
+        drawDot((currX + 10) / 2, (currY + canvas.height-5) / 2, 1, "orange")
     }
     else {
         //purple
         //x 290, y 295
-        drawDot((currX + 290) / 2, (currY + 295) / 2, 1, "purple")
+        drawDot((currX + canvas.width-10) / 2, (currY + canvas.height-5) / 2, 1, "purple")
     }
 }
 
