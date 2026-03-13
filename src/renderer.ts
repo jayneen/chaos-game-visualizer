@@ -6,6 +6,9 @@
 const VERTEX_SIZE = 4;
 const DOT_SIZE = 2;
 
+// distance of vertices from edge
+const EDGE_DISTANCE = 10;
+
 const SUMM_ORANGE = "#fa9632";
 const SUMM_PURPLE = "#7d327d";
 const SUMM_GREEN = "#7d9632";
@@ -19,13 +22,12 @@ const ctx = canvas.getContext("2d");
 
 canvas.width = rect.width;
 canvas.height = rect.height;
+// starts in fullscreen
+document.documentElement.requestFullscreen();
 
 //global variables of the current point
 let currX = 0;
 let currY = 0;
-
-// starts in fullscreen
-document.documentElement.requestFullscreen();
 
 // buttons
 // adds a new point to the canvas
@@ -60,9 +62,9 @@ function drawDot(x: number, y: number, radius: number = DOT_SIZE, color: string 
 //draws the initial dots
 function vertexDots() {
     if (ctx != null) {
-        drawDot(canvas.width/2, 5, VERTEX_SIZE, SUMM_GREEN);
-        drawDot(10, canvas.height - 5, VERTEX_SIZE, SUMM_ORANGE);
-        drawDot(canvas.width - 10, canvas.height - 5, VERTEX_SIZE, SUMM_PURPLE);
+        drawDot(canvas.width/2, EDGE_DISTANCE, VERTEX_SIZE, SUMM_GREEN);
+        drawDot(EDGE_DISTANCE, canvas.height - EDGE_DISTANCE, VERTEX_SIZE, SUMM_ORANGE);
+        drawDot(canvas.width - EDGE_DISTANCE, canvas.height - EDGE_DISTANCE, VERTEX_SIZE, SUMM_PURPLE);
     }
 
 }
@@ -79,17 +81,17 @@ function placeRandomDot() {
     if (temp == 0) {
         //green
         //x 150, y 5
-        drawDot((currX + canvas.width/2) / 2, (currY + 5) / 2, DOT_SIZE, SUMM_GREEN);
+        drawDot((currX + canvas.width/2) / 2, (currY + EDGE_DISTANCE) / 2, DOT_SIZE, SUMM_GREEN);
     }
     else if (temp == 1) {
         //orange
         //x 10, y 295
-        drawDot((currX + 10) / 2, (currY + canvas.height-5) / 2, DOT_SIZE, SUMM_ORANGE);
+        drawDot((currX + EDGE_DISTANCE) / 2, (currY + canvas.height - EDGE_DISTANCE) / 2, DOT_SIZE, SUMM_ORANGE);
     }
     else {
         //purple
         //x 290, y 295
-        drawDot((currX + canvas.width-10) / 2, (currY + canvas.height-5) / 2, DOT_SIZE, SUMM_PURPLE);
+        drawDot((currX + canvas.width - EDGE_DISTANCE) / 2, (currY + canvas.height - EDGE_DISTANCE) / 2, DOT_SIZE, SUMM_PURPLE);
     }
 }
 
@@ -101,4 +103,4 @@ vertexDots();
 // the old dot if it is outside the 3 vertex dots
 // drawDot(randomInRange(0, canvas.width), randomInRange(0, canvas.height)); 
 drawDot(canvas.width/2, canvas.height/2, DOT_SIZE, SUMM_BLUE);
-setInterval(placeRandomDot, 5000); // calls every 5 seconds
+setInterval(placeRandomDot, 50); // calls every 5 seconds
