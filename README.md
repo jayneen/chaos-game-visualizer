@@ -10,6 +10,7 @@ Base behavior:
 5. Pressing the spacebar/USB button bypasses the timer and adds a new dot as described in Step 3.
 
 IDE Set Up:
+Windows:
 1. Clone the repository.
 2. Check if Node.js is installed:  
         node -v  
@@ -22,3 +23,15 @@ IDE Set Up:
         npm run build
 5. Run:  
         npm start
+
+Linux:
+1. Navigate to electron to grant permissions:  
+        cd node_modules/electron/dist
+2. Set owner:  
+        sudo chown root:root chrome-sandbox
+3. Enable SUID permissions:  
+        sudo chmod 4755 chrome-sandbox
+4. Check with:  
+        ls -l chrome-sandbox  
+   Should output something similar to:  
+        -rwsr-xr-x 1 root root...
