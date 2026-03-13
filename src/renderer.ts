@@ -1,4 +1,17 @@
 // constants
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////// DOT SIZE //////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+const VERTEX_SIZE = 4;
+const DOT_SIZE = 2;
+
+const SUMM_ORANGE = "#fa9632";
+const SUMM_PURPLE = "#7d327d";
+const SUMM_GREEN = "#7d9632";
+const SUMM_RED = "#c83219";
+const SUMM_BLUE = '#01352f';
+
 // browser renderer
 const canvas = document.getElementById("canvas") as HTMLCanvasElement;
 const rect = canvas.getBoundingClientRect();
@@ -16,6 +29,11 @@ document.documentElement.requestFullscreen();
 
 // buttons
 // adds a new point to the canvas
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////// THE BUTTON //////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
 window.addEventListener("keydown", (event: KeyboardEvent) => {
   if (event.code === "Space") {
     if (ctx != null) {
@@ -27,7 +45,7 @@ window.addEventListener("keydown", (event: KeyboardEvent) => {
 
 // functions
 // draws a dot at given location
-function drawDot(x: number, y: number, radius: number = 3, color: string = "black") {
+function drawDot(x: number, y: number, radius: number = DOT_SIZE, color: string = "black") {
     currX = x;
     currY = y;
 
@@ -42,9 +60,9 @@ function drawDot(x: number, y: number, radius: number = 3, color: string = "blac
 //draws the initial dots
 function vertexDots() {
     if (ctx != null) {
-        drawDot(canvas.width/2, 5, 3, "green");
-        drawDot(10, canvas.height - 5, 3, "orange");
-        drawDot(canvas.width - 10, canvas.height - 5, 3, "purple");
+        drawDot(canvas.width/2, 5, VERTEX_SIZE, SUMM_GREEN);
+        drawDot(10, canvas.height - 5, VERTEX_SIZE, SUMM_ORANGE);
+        drawDot(canvas.width - 10, canvas.height - 5, VERTEX_SIZE, SUMM_PURPLE);
     }
 
 }
@@ -61,17 +79,17 @@ function placeRandomDot() {
     if (temp == 0) {
         //green
         //x 150, y 5
-        drawDot((currX + canvas.width/2) / 2, (currY + 5) / 2, 1, "green")
+        drawDot((currX + canvas.width/2) / 2, (currY + 5) / 2, DOT_SIZE, SUMM_GREEN);
     }
     else if (temp == 1) {
         //orange
         //x 10, y 295
-        drawDot((currX + 10) / 2, (currY + canvas.height-5) / 2, 1, "orange")
+        drawDot((currX + 10) / 2, (currY + canvas.height-5) / 2, DOT_SIZE, SUMM_ORANGE);
     }
     else {
         //purple
         //x 290, y 295
-        drawDot((currX + canvas.width-10) / 2, (currY + canvas.height-5) / 2, 1, "purple")
+        drawDot((currX + canvas.width-10) / 2, (currY + canvas.height-5) / 2, DOT_SIZE, SUMM_PURPLE);
     }
 }
 
@@ -82,5 +100,5 @@ vertexDots();
 // initial dot, will need to add a check after we map a new dot to delete 
 // the old dot if it is outside the 3 vertex dots
 // drawDot(randomInRange(0, canvas.width), randomInRange(0, canvas.height)); 
-drawDot(canvas.width/2, canvas.height/2);
-setInterval(placeRandomDot, 10000); // calls every 10 seconds
+drawDot(canvas.width/2, canvas.height/2, DOT_SIZE, SUMM_BLUE);
+setInterval(placeRandomDot, 5000); // calls every 5 seconds
