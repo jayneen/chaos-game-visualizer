@@ -1,37 +1,44 @@
 # Chaos Game Visualizer
 ### Created for the Seattle Universal Math Museum
-#### Authors: Zane Swaims, Jayne Nemynova
 
-Base behavior:
+**Features**
+Algorithm:
 1. Places 3 equally spaced out SUMM colored dots on screen.
 2. Places a 4th black starting dot anywhere on screen.
 3. Every X seconds a random color is picked, and a new dot is placed halfway between the last dot and the original dot of the chosen color. It takes on the same color.
-4. Pressing the Add a Dot button bypasses the timer and adds a new dot as described in Step 3.
-5. Pressing the Reset button resets the GUI to the starting state as described in Steps 1 and 2.
-6. Next 100 draws 100 new dots.
-7. Final draws 10,000 new dots.
+Interactions:
+1. Pressing *Add a Dot* bypasses the timer and adds a new dot as described in Step 3.
+2. Pressing *Reset* resets the GUI to the starting state as described in Steps 1 and 2.
+3. *Next 100* draws 100 new dots.
+4. *Final* draws 10,000 new dots to reveal the final pattern.
 
-TODO: by 21st
-- Variable number of vertices [2 to 8].
-- Independent R-value slider and textbox for precise values.
-- Larger canvas (extend horizontally).
-- Front-end clean up.
-- Deleting artifact points.
-- Code clean up.
+## Development
+### Prerequisites
+- Node.js.
 
-Example: 
-https://thewessens.net/ClassroomApps/Main/chaosgame.html
+### Installation
+```bash
+git clone https://github.com/jayneen/chaos-game-visualizer.git
+cd repo
+npm install
+```
 
-IDE Set Up:
-1. Clone the repository.
-2. Check if Node.js is installed:  
-        node -v  
-        npm -v  
-   If not, install with: winget install OpenJS.NodeJS.LTS  
-   Winget should be included with Win10/11.  
-3. Install dependencies:  
-        npm install  
-4. Build:  
-        npm run build
-5. Run:  
-        npm start
+Start the local development server:
+```bash
+npm run build
+npm start
+```
+
+## Known Limitations
+- Does not support variable numbers of vertices [2 to 8].
+- Does not supprt an independent R-value slider and textbox for precise values.
+- Narrow canvas (extend horizontally).
+- Does not delete starting artifact points.
+
+## Credits
+### Developers
+- Zane Swaims
+- Evgeniia Nemynova
+
+### External Resources
+Inspiration: https://thewessens.net/ClassroomApps/Main/chaosgame.html
